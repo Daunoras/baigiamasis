@@ -10,4 +10,4 @@ Reikalingas Redis.
 
 Kadangi projekte naudojamas nemokamo plano API key - nesuteikiamas priėjimas prie visų įrašų ir ribojamas užklausų skaičius iki 300 per dieną. Tačiau to užtenka funkcionalumui pademonstruoti. 
 
-requirements.txt faile surašyti instaliuoti paketai. Yra pora nenaudojamų, kuriuos reikėtų pašalinti, tačiau palikau, kad paskutinę akimirką ko nors nesugadinčiau.
+(requirements.txt faile surašyti instaliuoti paketai. Yra pora nenaudojamų, kuriuos reikėtų pašalinti, tačiau palikau, kad paskutinę akimirką ko nors nesugadinčiau.)
