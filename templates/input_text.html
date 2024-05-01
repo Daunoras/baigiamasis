@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Search for your plant</h1>
+    <form method="post" id="atitraukta">
+        {% csrf_token %}
+        <label for="input_text">Enter the scientific name of your plant:</label><br>
+        <input type="text" id="input_text" name="input_text"><br><br>
+        <input class="btn"  type="submit" value="Submit">
+    </form>
+<br>
+    <h2 id="atitraukta">Or add a custom plant</h2>
+    <a id="atitraukta" href="{% url 'custom-plant' %}" ><button>Add</button></a>
+{% endblock %}

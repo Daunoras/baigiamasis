@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My plants</h1>
+
+    {% if plant_list %}
+    <ul>
+
+      {% for plant in plant_list %}
+<li id="plants">
+        <a  href="{% url 'plant-details' plant.pk %}">{{plant}}  ({{ plant.next_watering }})</a>
+</li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>You have no plants.</p>
+
+    {% endif %}       
+{% endblock %}

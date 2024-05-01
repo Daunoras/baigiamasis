@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My plant</h1>
+    <hr>
+    <ul id="atitraukta">
+        <li><strong >Name: {{object.name}}</strong></li>
+        <li><strong>Scientific name:</strong> {{object.sciname}}</li>
+        <li><strong id="{% if object.drying %}d{% endif %}{% if object.needs_watering %}n{% endif %}g">Last watered:</strong> {{object.watered}}</li>
+        <li><strong>Next watering:</strong> {{object.next_watering}}</li>
+        <li><strong>Recomended watering every {{object.watering}}</strong></li>
+        <br/>
+        <div>
+
+          <form action="{% url 'plant-details' pk=object.pk %}" method="post">
+                {% csrf_token %}
+                <button id="water" type="submit">Water now</button>
+            </form>
+          <a href="{% url 'plant-update' object.id %}" ><button>Update</button></a>
+          <a href="{% url 'plant-delete' object.id %}" ><button id="destroy">Delete</button></a>
+        </div>
+        <br/>
+        {% if object.pic %}
+            <img src="{{object.pic.url}}">
+        {% endif %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Choose your plant</h1>
+    <form id="atitraukta" method="post" action="{% url 'create' %}">
+        {% csrf_token %}
+        <ul>
+            {% for obj in api_data %}
+                <li>
+                    <input type="radio" id="{{ obj.id }}" name="selected_object" value="{{ obj.id }}">
+                    <label for="{{ obj.id }}">{{ obj.scientific_name.0}} {{ obj.id }}</label>
+
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Submit" name="submitted">
+    </form>
+{% endblock %}
