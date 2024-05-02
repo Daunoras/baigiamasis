@@ -11,7 +11,7 @@ def send_watering_notifications():
         if plant.owner.email:
             recipient = plant.owner.email
         else:
-            break
+            continue
         if plant.name:
             message = f"{plant.name} needs watering. http://127.0.0.1:8000/plants/myplants/{plant.pk}"
         elif plant.sciname:
