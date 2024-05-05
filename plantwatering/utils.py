@@ -8,7 +8,6 @@ def fetch_api_data(part:str):
     # url examples:
     # https://perenual.com/api/species/details/[ID]?key=[YOUR-API-KEY] -detail view
     # https://perenual.com/api/species-list?key=[YOUR-API-KEY]&q=[PLANT-NAME] -list, search by name
-    # API key sk-4ZiR66169c759a2575057
     # part must be "/details/[ID]?key=[YOUR-API-KEY]" for single plant data and
     #  "-list?key=[YOUR-API-KEY]&q=[PLANT-NAM E]" for plant search by name
     url = f"https://perenual.com/api/species{part}"
@@ -33,7 +32,7 @@ def plant_from_api_data(data, user):
         plant_instance.save()
 
 def select_object_and_create(id):
-    part = f"/details/{id}?key=sk-4ZiR66169c759a2575057"
+    part = f"/details/{id}?key={api_key}" #api key redacted. Get your own at perenual.com
     selected_data = fetch_api_data(part)
     if selected_data:
         plant_from_api_data(selected_data)
