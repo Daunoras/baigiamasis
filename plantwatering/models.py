@@ -41,7 +41,6 @@ class Plant(models.Model):
             self.next_watering = self.watered + timedelta(days=self.min_time())
         super(Plant, self).save(*args, **kwargs)
 
-
     @property
     def needs_watering(self):
         needs = False

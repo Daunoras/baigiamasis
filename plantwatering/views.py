@@ -13,11 +13,9 @@ from .utils import fetch_api_data, plant_from_api_data, select_object_and_create
 
 
 def index(request):
-    # write vars and what they are equal to. Then put the vars into the context dict ex.:
-    # var = smth * sum(x)
-    # {'var': var}
     context = {}
     return render(request, 'index.html',context=context)
+
 
 @login_required
 def select_plant(request):
@@ -36,6 +34,7 @@ def select_plant(request):
                 return HttpResponse("Failed to fetch data from API.")
         else:
             return HttpResponse("Please provide input text.")
+
 
 @login_required
 def create_plant(request):
@@ -60,9 +59,9 @@ class OwnedPlantsListView(LoginRequiredMixin, generic.ListView):
     model = Plant
     template_name = 'my_plants.html'
 
-
     def get_queryset(self):
         return Plant.objects.filter(owner=self.request.user)
+
 
 @csrf_protect
 def register(request):
@@ -88,6 +87,7 @@ def register(request):
             return redirect('register')
     return render(request, 'register.html')
 
+
 @login_required
 def profile(request):
     if request.method == "POST":
@@ -104,6 +104,7 @@ def profile(request):
     }
     return render(request, 'profile.html', context)
 
+
 class PlantDetailView(LoginRequiredMixin, DetailView):
     model = Plant
     template_name = 'plant_details.html'
@@ -112,6 +113,8 @@ class PlantDetailView(LoginRequiredMixin, DetailView):
         plant = self.get_object()
         plant.water()
         return redirect('plant-details',  pk=plant.pk)
+
+
 class CustomPlantCreateView(LoginRequiredMixin, CreateView):
     model = Plant
     # fields = ['name', 'pic', 'watered', 'watering', 'sciname']
@@ -122,6 +125,7 @@ class CustomPlantCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
+
 
 class PlantUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Plant
@@ -136,6 +140,7 @@ class PlantUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         plant = self.get_object()
         return self.request.user == plant.owner
+
 
 class PlantDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Plant

@@ -9,8 +9,11 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['username', 'email']
 
+
 class DateInput(forms.DateInput):
     input_type = 'date'
+
+
 class CustomPlantCreateForm(forms.ModelForm):
     class Meta:
         model = Plant
