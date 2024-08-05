@@ -45,7 +45,8 @@ class Plant(models.Model):
     def needs_watering(self):
         needs = False
         if self.watered and self.watering:
-            if (self.watered + timedelta(days=self.min_time())) < date.today() and (self.watered + timedelta(days=self.max_time())) > date.today():
+            if ((self.watered + timedelta(days=self.min_time())) < date.today() and
+                    (self.watered + timedelta(days=self.max_time())) > date.today()):
                 needs = True
         return needs
 
