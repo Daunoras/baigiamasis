@@ -117,7 +117,6 @@ class PlantDetailView(LoginRequiredMixin, DetailView):
 
 class CustomPlantCreateView(LoginRequiredMixin, CreateView):
     model = Plant
-    # fields = ['name', 'pic', 'watered', 'watering', 'sciname']
     success_url = "/plants/myplants"
     template_name = 'custom_plant.html'
     form_class = CustomPlantCreateForm
